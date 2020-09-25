@@ -6,8 +6,38 @@
         <title>Doc</title>
     </head>
     <body>
-        <div id="root"></div>
+        <div id="root">React not Rendered</div>
         <script src="https://unpkg.com/react@16.8.6/umd/react.development.js"></script>
         <script src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"></script>
+        <script>
+            const Person = (props) => {
+                return React.createElement("div", {}, [
+                    React.createElement("h1", {}, props.name),
+                    React.createElement("p", {}, props.occupation)
+                ]);
+            }
+
+            class App extends React.Component {
+                
+            }
+
+            const App = () => {
+                return React.createElement(
+                  "div",
+                  {}, [
+                  React.createElement("h1", {}, "React is Rendered!"),
+                  React.createElement(Person, { name: "Colin", occupation: "Full Stack Developer"}),
+                  React.createElement(Person, { name: "Fredrik", occupation: "Retired Bike Racer" }),
+                  React.createElement(Person, { name: "Evan", occupation: "Ski Coach" })
+                  ]);
+                // first target the location - div
+                // then target the object
+                // then any children we wanna target
+            };
+            ReactDOM.render(
+              React.createElement(App),
+              document.getElementById("root")
+              );
+        </script>
     </body>
 </html>
